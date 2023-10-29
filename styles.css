@@ -1,0 +1,12 @@
+#grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.grid-item {
+  border: 1px solid black;
+  box-sizing: border-box;
+  width: calc(100% / 16);
+  padding-bottom: calc(100% / 16);
+
+}
