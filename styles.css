@@ -1,16 +1,24 @@
-#grid {
+#canvas {
   display: flex;
   flex-wrap: wrap;
+  width: 960px;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  margin: 0 auto; /* center the grid */
+
+
 }
 
-.grid-item {
+.canvas-bg {
   border: 1px solid black;
   box-sizing: border-box;
-  width: calc(100% / 16);
-  padding-bottom: calc(100% / 16);
-
+  width: calc(100% / 64);
+  padding-bottom: calc(100% / 64);
 }
 
-/* .grid-item:hover {
-  background-color: red;
-} */
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}

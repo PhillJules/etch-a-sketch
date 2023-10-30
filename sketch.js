@@ -1,18 +1,18 @@
 function setup() {
-let grid = document.getElementById("grid");
+let canvas = document.getElementById("canvas");
 
-  for (let i = 0; i < 256; i++) {
-    let div = document.createElement('div')
-    div.className = "grid-item" // add class to div
-    div.innerText = i // add text to div
-    grid.appendChild(div) // add div to grid
+  for (let i = 0; i < 4096; i++) {
+    let canvasBg = document.createElement('div')
+    canvasBg.className = "canvas-bg" // add class to div
+    // div.innerText = i // add text to div
+    canvas.appendChild(canvasBg) // add div to grid
   }
 
 // add event listener to each grid item
-  let gridItems = document.getElementsByClassName("grid-item");
-  for (let item of gridItems) {
-    item.addEventListener("mouseover", function(){
-      item.style.backgroundColor = "black"; // change background color
+  let canvasBg = document.getElementsByClassName("canvas-bg");
+  for (let cell of canvasBg) {
+    cell.addEventListener("mouseover", function(){
+      cell.style.backgroundColor = "black"; // change background color
     });
   }
 
