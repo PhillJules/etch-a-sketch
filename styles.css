@@ -10,11 +10,15 @@
 
 }
 
-.canvas-bg {
+.canvas-xl {
   border: 1px solid black;
   box-sizing: border-box;
-  width: calc(100% / 64);
-  padding-bottom: calc(100% / 64);
+  width: calc(100% / 16);
+  padding-bottom: calc(100% / 16);
+}
+
+.canvas-l {
+
 }
 
 .menu {
