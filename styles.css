@@ -17,8 +17,11 @@
   padding-bottom: calc(100% / 16);
 }
 
-.canvas-l {
-
+.canvas-lg {
+ border: 1px dotted grey;
+  box-sizing: border-box;
+  width: calc(100% / 32);
+  padding-bottom: calc(100% / 32);
 }
 
 .menu {

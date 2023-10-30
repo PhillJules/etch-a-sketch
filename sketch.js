@@ -41,6 +41,24 @@ function extraLarge() {
   }
 }
 
+function large() {
+  for (let i = 0; i < 1024; i++) {
+    let canvasLg = document.createElement('div')
+    canvasLg.className = "canvas-lg" // add class to div
+    canvas.appendChild(canvasLg) // add div to grid
+  }
+
+  // add event listener to each grid item
+  let canvasLg = document.getElementsByClassName("canvas-lg");
+  for (let cell of canvasLg) {
+    cell.addEventListener("mouseover", function() {
+      cell.style.backgroundColor = "black"; // change background color
+    });
+  }
+}
+
+document.getElementById("lg").addEventListener("click", large);
+
 document.getElementById("xl").addEventListener("click", extraLarge);
 
 
