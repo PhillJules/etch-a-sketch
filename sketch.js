@@ -72,11 +72,37 @@ let grid = document.getElementById("grid");
 //     });
 //   }
 // }
+const sizeSelectors = document.querySelectorAll(".size");
+
+function gridSizeSettings(event) {
+  // retrieve value from button clicked
+  // and create a grid from that value
+  const size = event.target.getAttribute("data-value");
+  grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+  grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+
+  for (let i = 0; i < size * size; i++) {
+    let gridCell = document.createElement("div");
+    gridCell.className = "grid-cell";
+    grid.appendChild(gridCell);
+  }
+}
+
+// add event listener to each size button
+sizeSelectors.forEach((sizeSelector) => {
+  sizeSelector.addEventListener("click", gridSizeSettings);
+})
 
 
-document.getElementById("md").addEventListener("click", medium);
-document.getElementById("lg").addEventListener("click", large);
-document.getElementById("xl").addEventListener("click", extraLarge);
+// function gridSize() {
+//   grid.style.gridTemplateColumns = "repeat(16, 1fr)";
+//   grid.style.gridTemplateRows = "repeat(16, 1fr)";
+// }
+
+
+// document.getElementById("md").addEventListener("click", medium);
+// document.getElementById("lg").addEventListener("click", large);
+// document.getElementById("xl").addEventListener("click", extraLarge);
 
 
 // for (let i = 0; i < 256; i++) {
