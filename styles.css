@@ -1,34 +1,12 @@
 #grid {
   display: grid;
-  width: 500px;
-  height: 500px;
+  width: 600px;
+  height: 600px;
   border: 1px solid black;
   background-color: wheat;
-}
-/*
-.canvas-xl {
-  /* display: grid; */
-  /* border: 1px solid black; */
-  /* box-sizing: border-box; */
-  /* grid-template-columns: repeat(16, 1fr); */
-  /* width: calc(100% / 16); */
-  /* padding-bottom: calc(100% / 16); */
-  /* grid-template-rows: repeat(16, 1fr); */
-/* } */
-
-/* .canvas-lg {
- border: 1px dotted grey;
-  box-sizing: border-box;
-  width: calc(100% / 32);
-  padding-bottom: calc(100% / 32);
+  margin: 0 auto;
 }
 
-.canvas-md {
-  border: 1px dotted grey;
-  box-sizing: border-box;
-  width: calc(100% / 64);
-  padding-bottom: calc(100% / 64);
-} */
 
 .menu {
   display: flex;
