@@ -84,6 +84,17 @@ grid.addEventListener("mouseup",() =>{
 // set the default color
 window.onload = () => {
   selectedColor = colorPicker.value;
+
+  grid.style.gridTemplateColumns = "repeat(16, 1fr)";
+  grid.style.gridTemplateRows = "repeat(16, 1fr)";
+
+
+  for (let i = 0; i < 16 * 16; i++) {
+    let gridCell = document.createElement("div");
+    gridCell.className = "grid-cell";
+    grid.appendChild(gridCell);
+  }
+
 }
 
 // add event listener to grid when mouse moves on the grid
