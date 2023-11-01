@@ -77,6 +77,11 @@ window.onload = () => {
   selectedColor = colorPicker.value;
 }
 
+
+
+
+
+
 // add event listener to grid when mouse moves on the grid
 grid.addEventListener("mousemove", (event) => {
   if (isDrawing || isErasing) {
