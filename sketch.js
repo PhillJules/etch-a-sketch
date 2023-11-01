@@ -65,18 +65,17 @@ grid.addEventListener("mousedown",(event) =>{
   }
 
 });
+
 //add event listener to grid when drawing stops
 grid.addEventListener("mouseup",() =>{
   isDrawing = false;
   isErasing = false;
 });
 
-
 // set the default color
 window.onload = () => {
   selectedColor = colorPicker.value;
 }
-
 
 // add event listener to grid when mouse moves on the grid
 grid.addEventListener("mousemove", (event) => {
