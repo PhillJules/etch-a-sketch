@@ -11,6 +11,8 @@ let clearButton = document.getElementById("clear");
 let isDrawing = false;
 let isErasing = false;
 
+
+
 // add event listener to clear button
 clearButton.addEventListener("click", () => {
   const cells = document.querySelectorAll(".grid-cell");
@@ -27,6 +29,14 @@ drawingMode.addEventListener("click", () => {
   eraseButton.style.color = "black";
   isErasing = false;
 
+})
+
+// add event listener to erase button
+eraseButton.addEventListener("click", () => {
+  eraseButton.style.backgroundColor = "black";
+  eraseButton.style.color = "white";
+  drawingMode.style.backgroundColor = "white";
+  drawingMode.style.color = "black";
 })
 
 // add event listener to color picker
@@ -52,15 +62,6 @@ function gridSizeSettings(event) {
 // add event listener to each size button
 sizeSelectors.forEach((sizeSelector) => {
   sizeSelector.addEventListener("click", gridSizeSettings);
-})
-
-
-// add event listener to erase button
-eraseButton.addEventListener("click", () => {
-  eraseButton.style.backgroundColor = "black";
-  eraseButton.style.color = "white";
-  drawingMode.style.backgroundColor = "white";
-  drawingMode.style.color = "black";
 })
 
 // add event listener to grid when drawing starts
@@ -95,6 +96,10 @@ window.onload = () => {
     grid.appendChild(gridCell);
   }
 
+  drawingMode.style.backgroundColor = "black";
+  drawingMode.style.color = "white";
+  eraseButton.style.backgroundColor = "white";
+  eraseButton.style.color = "black";
 }
 
 // add event listener to grid when mouse moves on the grid
