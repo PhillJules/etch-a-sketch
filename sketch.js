@@ -1,7 +1,13 @@
-// function setup() {
 let grid = document.getElementById("grid");
+let colorPicker = document.getElementById("colorPicker");
+let selectedColor;
 
 const sizeSelectors = document.querySelectorAll(".size");
+
+// add event listener to color picker
+colorPicker.addEventListener("input", (event) => {
+  selectedColor = event.target.value;
+})
 
 function gridSizeSettings(event) {
   // retrieve value from button clicked
@@ -39,8 +45,10 @@ eraseButton.addEventListener("click", () => {
 })
 
 // add event listener to grid when drawing starts
-grid.addEventListener("mousedown",() =>{
+grid.addEventListener("mousedown",(event) =>{
   isDrawing = true;
+  event.preventDefault();
+
 });
 //add event listener to grid when drawing stops
 grid.addEventListener("mouseup",() =>{
@@ -48,12 +56,19 @@ grid.addEventListener("mouseup",() =>{
   isErasing = false;
 });
 
+
+// set the default color
+window.onload = () => {
+  selectedColor = colorPicker.value;
+}
+
+
 // add event listener to grid when mouse moves on the grid
 grid.addEventListener("mousemove", (event) => {
   if (isDrawing) {
     const cell = event.target;
     if (cell.classList.contains("grid-cell")) {
-      cell.style.backgroundColor = "black";
+      cell.style.backgroundColor = selectedColor;
     }
   }
 });
