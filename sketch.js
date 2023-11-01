@@ -5,10 +5,19 @@ let drawingMode = document.getElementById("drawing-mode");
 let selectedColor;
 let eraseButton = document.getElementById("erase");
 const sizeSelectors = document.querySelectorAll(".size");
+let clearButton = document.getElementById("clear");
 
 // add variable to keep track of whether or not drawing is happening or erasing
 let isDrawing = false;
 let isErasing = false;
+
+// add event listener to clear button
+clearButton.addEventListener("click", () => {
+  const cells = document.querySelectorAll(".grid-cell");
+  cells.forEach((cell) => {
+    cell.style.backgroundColor = grid.style.backgroundColor;
+  })
+})
 
 // add event listener to drawing mode button
 drawingMode.addEventListener("click", () => {
@@ -76,11 +85,6 @@ grid.addEventListener("mouseup",() =>{
 window.onload = () => {
   selectedColor = colorPicker.value;
 }
-
-
-
-
-
 
 // add event listener to grid when mouse moves on the grid
 grid.addEventListener("mousemove", (event) => {
