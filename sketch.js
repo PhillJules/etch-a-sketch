@@ -1,12 +1,29 @@
+
 let grid = document.getElementById("grid");
 let colorPicker = document.getElementById("colorPicker");
+let drawingMode = document.getElementById("drawing-mode");
 let selectedColor;
-
+let eraseButton = document.getElementById("erase");
 const sizeSelectors = document.querySelectorAll(".size");
+
+// add variable to keep track of whether or not drawing is happening or erasing
+let isDrawing = false;
+let isErasing = false;
+
+// add event listener to drawing mode button
+drawingMode.addEventListener("click", () => {
+  drawingMode.style.backgroundColor = "black";
+  drawingMode.style.color = "white";
+  eraseButton.style.backgroundColor = "white";
+  eraseButton.style.color = "black";
+  isErasing = false;
+
+})
 
 // add event listener to color picker
 colorPicker.addEventListener("input", (event) => {
   selectedColor = event.target.value;
+
 })
 
 function gridSizeSettings(event) {
@@ -28,26 +45,24 @@ sizeSelectors.forEach((sizeSelector) => {
   sizeSelector.addEventListener("click", gridSizeSettings);
 })
 
-// add variable to keep track of whether or not drawing is happening or erasing
-let isDrawing = false;
-let isErasing = false;
-
-// select the erase button by id
-let eraseButton = document.getElementById("erase");
 
 // add event listener to erase button
 eraseButton.addEventListener("click", () => {
-  isErasing = true;
-  isDrawing = false;
-  alert("Click on the canvas to start drawing");
   eraseButton.style.backgroundColor = "black";
   eraseButton.style.color = "white";
+  drawingMode.style.backgroundColor = "white";
+  drawingMode.style.color = "black";
 })
 
 // add event listener to grid when drawing starts
 grid.addEventListener("mousedown",(event) =>{
-  isDrawing = true;
   event.preventDefault();
+
+  if (eraseButton.style.backgroundColor === "black") {
+    isErasing = true;
+  } else if (drawingMode.style.backgroundColor === "black") {
+    isDrawing = true;
+  }
 
 });
 //add event listener to grid when drawing stops
@@ -65,20 +80,15 @@ window.onload = () => {
 
 // add event listener to grid when mouse moves on the grid
 grid.addEventListener("mousemove", (event) => {
-  if (isDrawing) {
+  if (isDrawing || isErasing) {
     const cell = event.target;
     if (cell.classList.contains("grid-cell")) {
-      cell.style.backgroundColor = selectedColor;
-    }
-  }
-});
+      if (isDrawing) {
+        cell.style.backgroundColor = selectedColor;
+      }else if (isErasing) {
+        cell.style.backgroundColor = grid.style.backgroundColor;
+      }
 
-// Add a mouse move event listener to erase on the grid when the mouse is moved
-grid.addEventListener("mousemove", (event) => {
-  if (isErasing) {
-    const cell = event.target;
-    if (cell.classList.contains("grid-cell")) {
-      cell.style.backgroundColor = grid.style.backgroundColor; // Set cell background to match the grid background
     }
   }
 });
