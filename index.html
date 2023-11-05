@@ -8,25 +8,35 @@
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-  <div class="menu">
-    <h1>Etch A Sketch</h1>
-    <div class="size-selection">
-      <button class="size" data-value="16">16 x 16</button>
-      <button class="size" data-value="32">32 x 32</button>
-      <button class="size" data-value="64">64 x 64</button>
-      <button class="size" data-value="100">100 x 100</button>
-      <button id="erase">Eraser</button>
-      <label for="colorPicker">Select your favorite color:</label>
-      <input type="color" id="colorPicker" value="#000000">
+  <div class="heading"><h1>Etch A Sketch</h1></div>
+  <div class="game-container">
+    <div class="playground">
+      <div class="color-selector">
+        <!-- <div class="color"> -->
+          <input type="color" id="colorPicker" value="#000000">
+          <button id="color-button">Color</button>
+        <!-- </div> -->
+      </div>
+      <div id="main">
+        <div id="grid">
+        </div>
+      </div>
+      <div class="controls">
       <button id="drawing-mode">Draw</button>
+      <button id="erase">Eraser</button>
       <button id="clear">Clear</button>
+      </div>
+      <!-- <div class="size-selection">
+        <button class="size" data-value="16">16 x 16</button>
+        <button class="size" data-value="32">32 x 32</button>
+        <button class="size" data-value="64">64 x 64</button>
+        <button class="size" data-value="100">100 x 100</button>
+      </div> -->
     </div>
-  </div>
-  <div id="main">
-    <div id="grid">
 
-    </div>
   </div>
-
+  <div class="slider-container">
+    <input type="range" min="16" max="100" value="16" class="slider" id="grid-size-slider">
+  </div>
 </body>
 </html>

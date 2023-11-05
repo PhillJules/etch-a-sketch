@@ -1,11 +1,14 @@
 
 let grid = document.getElementById("grid");
+const gridSizeSlider = document.getElementById("grid-size-slider");
 let colorPicker = document.getElementById("colorPicker");
+let colorButton =document.getElementById("color-button")
 let drawingMode = document.getElementById("drawing-mode");
 let selectedColor;
 let eraseButton = document.getElementById("erase");
 const sizeSelectors = document.querySelectorAll(".size");
 let clearButton = document.getElementById("clear");
+
 
 // add variable to keep track of whether or not drawing is happening or erasing
 let isDrawing = false;
@@ -43,26 +46,51 @@ eraseButton.addEventListener("click", () => {
 colorPicker.addEventListener("input", (event) => {
   selectedColor = event.target.value;
 
+});
+
+colorButton.addEventListener("click", () => {
+  colorPicker.click();
+});
+
+gridSizeSlider.addEventListener("input", function(){
+  const gridSize = gridSizeSlider.value;
+  updateGrid(gridSize);
 })
 
-function gridSizeSettings(event) {
-  // retrieve value from button clicked
-  // and create a grid from that value
-  const size = event.target.getAttribute("data-value");
+
+function updateGrid(size) {
+  grid.innerHTML = ""; // Clear the existing grid
+
+  // Set grid CSS properties based on the selected size
   grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
   grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
 
+  // Create grid cells
   for (let i = 0; i < size * size; i++) {
-    let gridCell = document.createElement("div");
+    const gridCell = document.createElement("div");
     gridCell.className = "grid-cell";
     grid.appendChild(gridCell);
   }
 }
 
-// add event listener to each size button
-sizeSelectors.forEach((sizeSelector) => {
-  sizeSelector.addEventListener("click", gridSizeSettings);
-})
+// function gridSizeSettings(event) {
+//   // retrieve value from button clicked
+//   // and create a grid from that value
+//   const size = event.target.getAttribute("data-value");
+//   grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+//   grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+
+//   for (let i = 0; i < size * size; i++) {
+//     let gridCell = document.createElement("div");
+//     gridCell.className = "grid-cell";
+//     grid.appendChild(gridCell);
+//   }
+// }
+
+// // add event listener to each size button
+// sizeSelectors.forEach((sizeSelector) => {
+//   sizeSelector.addEventListener("click", gridSizeSettings);
+// })
 
 // add event listener to grid when drawing starts
 grid.addEventListener("mousedown",(event) =>{
