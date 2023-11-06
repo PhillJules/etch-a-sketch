@@ -1,10 +1,37 @@
-.heading {
-  display: flex;
+* {
+  box-sizing: border-box;
+  font-family: 'VT323', monospace;
+}
+body {
+  background-image: url(./assets/etchbg.jpg);
+  margin: 0;
+}
+
+.header {
+  /* display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
   border-bottom: 1px solid black;
   width: 100%;
-  margin: 0px;
+  margin-top: 0;
+  background-color: #0560FD;
+  position: sticky;
+  text-align: center;
+  top: 0;
+  margin-bottom: 15px;
+}
+
+.header h1 {
+  font-size: 3em;
+  color: white;
+  margin: 0;
+  padding: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.container {
+  margin-top: 15px;
 }
 
 #grid {
@@ -12,7 +39,7 @@
   width: 550px;
   height: 550px;
   border: 1px solid black;
-  background-color: wheat;
+  background-color: #F18DFC;
   margin: 0 auto;
 }
 
@@ -72,6 +99,7 @@
   justify-content: space-around;
   width: 100%;
   gap: 50px;
+  margin-top: 15px;
 }
 
 .controls button {
