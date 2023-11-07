@@ -116,8 +116,15 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   margin-left: 45px;
   margin-top: 15px;
+  gap: 10px;
+  font-size: 3em;
+}
+.grid-size-display {
+  border: 3px dotted #F18DFC;
+  background-color: #E0DEFE;
 }
 
 .slider {
