@@ -9,6 +9,7 @@ let eraseButton = document.getElementById("erase");
 const sizeSelectors = document.querySelectorAll(".size");
 let clearButton = document.getElementById("clear");
 let gridSizeDisplay = document.getElementsByClassName("grid-size-display");
+let rainbowMode = document.getElementById("rainbow-mode");
 
 // add variable to keep track of whether or not drawing is happening or erasing
 let isDrawing = false;
@@ -48,9 +49,30 @@ colorPicker.addEventListener("input", (event) => {
 
 });
 
+function randomColor() {
+  const letters = "0123456789ABCDEF";
+  let color = "#";
+  for (let i = 0; i < 6; i++){
+   color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
 colorButton.addEventListener("click", () => {
   colorPicker.click();
+  rainbowMode.style.backgroundColor = "white";
+  rainbowMode.style.color = "black";
+  colorButton.style.backgroundColor = "#9562FF";
+  colorButton.style.color = "white";
 });
+
+// add event listener to rainbow mode button
+rainbowMode.addEventListener("click", () => {
+  rainbowMode.style.backgroundColor = "#9562FF";
+  rainbowMode.style.color = "white";
+  colorButton.style.backgroundColor = "white";
+  colorButton.style.color = "black";
+})
 
 gridSizeSlider.addEventListener("input", function(){
   const gridSize = gridSizeSlider.value;
@@ -75,24 +97,6 @@ function updateGrid(size) {
   gridSizeDisplay[0].innerHTML = `${size} x ${size}`;
 }
 
-// function gridSizeSettings(event) {
-//   // retrieve value from button clicked
-//   // and create a grid from that value
-//   const size = event.target.getAttribute("data-value");
-//   grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
-//   grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
-
-//   for (let i = 0; i < size * size; i++) {
-//     let gridCell = document.createElement("div");
-//     gridCell.className = "grid-cell";
-//     grid.appendChild(gridCell);
-//   }
-// }
-
-// // add event listener to each size button
-// sizeSelectors.forEach((sizeSelector) => {
-//   sizeSelector.addEventListener("click", gridSizeSettings);
-// })
 
 // add event listener to grid when drawing starts
 grid.addEventListener("mousedown",(event) =>{
@@ -130,6 +134,9 @@ window.onload = () => {
   drawingMode.style.color = "white";
   eraseButton.style.backgroundColor = "white";
   eraseButton.style.color = "black";
+  colorButton.style.backgroundColor = "#9562FF";
+  colorButton.style.color = "white";
+  rainbowMode.style.backgroundColor = "white";
 }
 
 // add event listener to grid when mouse moves on the grid
@@ -138,7 +145,11 @@ grid.addEventListener("mousemove", (event) => {
     const cell = event.target;
     if (cell.classList.contains("grid-cell")) {
       if (isDrawing) {
-        cell.style.backgroundColor = selectedColor;
+        if (rainbowMode.style.backgroundColor === "rgb(149, 98, 255)") {
+          cell.style.backgroundColor = randomColor();
+        } else {
+          cell.style.backgroundColor = selectedColor;
+        }
       }else if (isErasing) {
         cell.style.backgroundColor = grid.style.backgroundColor;
       }
