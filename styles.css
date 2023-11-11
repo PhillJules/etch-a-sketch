@@ -93,6 +93,7 @@ body {
   align-items: center;
   justify-content: center;
   width: 100%;
+  margin-bottom: 15px;
 }
 
 .playground {
@@ -124,9 +125,19 @@ body {
   gap: 10px;
   font-size: 3em;
 }
-.grid-size-display {
+
+.size-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 70px;
+}
+#grid-size-display {
   border: 3px dotted #F18DFC;
   background-color: #E0DEFE;
+  width: 150px;
+  font-size: 3em;
+  text-align: center;
 }
 
 .slider {

@@ -8,7 +8,7 @@ let selectedColor;
 let eraseButton = document.getElementById("erase");
 const sizeSelectors = document.querySelectorAll(".size");
 let clearButton = document.getElementById("clear");
-let gridSizeDisplay = document.getElementsByClassName("grid-size-display");
+let gridSizeDisplay = document.getElementsByClassName("grid-size-display")[0];
 let rainbowMode = document.getElementById("rainbow-mode");
 
 // add variable to keep track of whether or not drawing is happening or erasing
@@ -94,7 +94,8 @@ function updateGrid(size) {
     grid.appendChild(gridCell);
   }
 
-  gridSizeDisplay[0].innerHTML = `${size} x ${size}`;
+   gridSizeDisplay.innerHTML = `${size} x ${size}`;
+
 }
 
 
@@ -122,7 +123,7 @@ window.onload = () => {
 
   grid.style.gridTemplateColumns = "repeat(16, 1fr)";
   grid.style.gridTemplateRows = "repeat(16, 1fr)";
-
+  gridSizeDisplay.innerHTML = "16 x 16";
 
   for (let i = 0; i < 16 * 16; i++) {
     let gridCell = document.createElement("div");
